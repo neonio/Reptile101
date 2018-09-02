@@ -11,12 +11,12 @@ browser_entity = webdriver.Chrome(executable_path="/Applications/ChromeDriver/ch
 # https://chromedriver.storage.googleapis.com/index.html?path=2.41/
 try:
     # 浏览器基本操作
-    browser_entity.get("http://www.baidu.com")
+    browser_entity.get("https://maoyan.com/board/1?")
     # browser_entity.back()
     # browser_entity.forward()
 
     # 获取百度输入框的 id
-    op_input = browser_entity.find_element_by_id('kw')
+    # op_input = browser_entity.find_element_by_id('kw')
     # op_input = browser_entity.find_element_by_class_name('')
     # op_input = browser_entity.find_element_by_css_selector()
     # op_input = browser_entity.find_element(By.ID, 'kw')
@@ -26,8 +26,8 @@ try:
     # 获取了这些属性可以使用 AutoChain 进行一些类似移动的操作
 
     # 元素交互
-    op_input.send_keys('Python')
-    op_input.send_keys(Keys.ENTER)
+    # op_input.send_keys('Python')
+    # op_input.send_keys(Keys.ENTER)
     # op_input.clear()
 
     # 执行 js
@@ -37,8 +37,8 @@ try:
     # browser_entity.implicitly_wait(10)
 
     # 或者基于某个条件的等待
-    wait = WebDriverWait(browser_entity, 10)
-    wait.until(expected_conditions.presence_of_element_located((By.ID, 'content_left')))
+    # wait = WebDriverWait(browser_entity, 10)
+    # wait.until(expected_conditions.presence_of_element_located((By.ID, 'content_left')))
     # wait.until(expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, '.btn-search')))
 
     # 设置 Cookie
