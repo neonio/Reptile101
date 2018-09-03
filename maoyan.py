@@ -15,14 +15,37 @@ def create_font_cloud(font_file) -> TTFont:
     return TTFont('./font/{}'.format(font_file))
 
 
-def parse_font(html: str):
+def parse_font(html: str) -> str:
     result = re.search(r'embedded-opentype.*?vfile\.meituan\.net\/colorstone\/(.*?)\.woff', html, re.S)
     if result is None:
         return
     if result.group(1) is not None:
         site_font = create_font_cloud(result.group(1) + '.woff')
         gly_list = site_font.getGlyphOrder()
-        print(gly_list[2:])
+        fonts_string = map(lambda x: x.replace("uni", "&#x"), gly_list[2:])
+        print(html)
+        print("--------------")
+        for index, item in enumerate(fonts_string):
+            html = re.sub(item, str(value_map(index)), html, flags=re.S | re.I)
+        print(html)
+
+
+def value_map(index: int) -> int:
+    # code => normal
+    num_dict = {
+        9: 1,
+        1: 2,
+        0: 3,
+        3: 4,
+        2: 5,
+        4: 6,
+        7: 7,
+        6: 8,
+        8: 9,
+        5: 0,
+    }
+    return num_dict[index]
+
 
 
 def get_headers_for_spider() -> dict:
