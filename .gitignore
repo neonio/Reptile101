@@ -106,3 +106,4 @@ venv.bak/
 /font
 /img
 /test.ipynb
+.DS_Store
